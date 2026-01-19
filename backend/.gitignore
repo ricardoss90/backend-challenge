@@ -1,0 +1,37 @@
+# Build folders
+bin/
+obj/
+
+# Rider / JetBrains
+.idea/
+*.sln.iml
+
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.ntvs*
+*.njsproj
+*.sdf
+*.cache
+*.log
+
+# Visual Studio
+.vs/
+*.VC.db
+
+# OS
+.DS_Store
+Thumbs.db
+
+# NuGet
+*.nupkg
+packages/
+
+# JetBrains Rider
+.idea/
+*.iml
+*.iws
+workspace.xml
+vcs.xml
+encodings.xml
