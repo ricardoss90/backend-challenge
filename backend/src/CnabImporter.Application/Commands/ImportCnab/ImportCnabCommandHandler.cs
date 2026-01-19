@@ -63,7 +63,6 @@ public class ImportCnabCommandHandler(
                 var transaction = new Transaction
                 {
                     StoreId = store.Id,
-                    Store = store,
                     TransactionType = type,
                     Date = dateTime,
                     Cpf = cpf,
@@ -73,7 +72,7 @@ public class ImportCnabCommandHandler(
 
                 await transactionRepository.AddTransactionAsync(transaction);
             }
-            catch
+            catch(Exception e)
             {
                 // skip invalid line, could also log errors
                 continue;

@@ -8,7 +8,6 @@
     ports:
       - "1435:1433"
     restart: unless-stopped
-    # Remove healthcheck for now, rely on restart policy
     networks:
       - cnab-network
 
@@ -25,6 +24,18 @@
     depends_on:
       - sqlserver
     restart: on-failure
+    networks:
+      - cnab-network
+        
+  sqlserver-test:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: cnab-sqlserver-test
+    environment:
+      SA_PASSWORD: "YourStrong!Passw0rd"
+      ACCEPT_EULA: "Y"
+    ports:
+      - "1436:1433"
+    restart: unless-stopped
     networks:
       - cnab-network
 
