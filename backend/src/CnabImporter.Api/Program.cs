@@ -1,18 +1,40 @@
 using CnabImporter.Application;
+using CnabImporter.Infrastructure;
+using Microsoft.AspNetCore.Http.Features;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container
+// Add services
 builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer(); // needed for Swagger
-builder.Services.AddSwaggerGen(); // standard Swagger
 
-// Register Application layer (MediatR)
+// Configure file upload limit (optional)
+builder.Services.Configure<FormOptions>(options =>
+{
+    options.MultipartBodyLengthLimit = 50 * 1024 * 1024; // 50MB
+});
+
+// Add Swagger/OpenAPI
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+// Add Application and Infrastructure layers
 builder.Services.AddApplicationServices();
+builder.Services.AddInfrastructureServices(builder.Configuration);
+
+// Configure CORS for Angular front-end
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy.AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
 
 var app = builder.Build();
 
-// Configure middleware
+// Middleware
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -20,6 +42,9 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors();
+
 app.MapControllers();
 
 app.Run();
