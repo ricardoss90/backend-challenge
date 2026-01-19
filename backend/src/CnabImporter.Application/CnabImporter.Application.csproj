@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CnabImporter.Domain\CnabImporter.Domain.csproj" />
+    <ProjectReference Include="..\CnabImporter.Infrastructure\CnabImporter.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>
