@@ -9,6 +9,7 @@ public class Transaction
     public Store Store { get; set; } = null!;
 
     public int TransactionType { get; set; }
+    public DateTime Date { get; set; }
     public string Cpf { get; set; } = null!;
     public string Card { get; set; } = null!;
     public decimal Value { get; set; }
