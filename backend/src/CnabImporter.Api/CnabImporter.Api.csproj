@@ -12,4 +12,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="8.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CnabImporter.Application\CnabImporter.Application.csproj" />
+    <ProjectReference Include="..\CnabImporter.Infrastructure\CnabImporter.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
