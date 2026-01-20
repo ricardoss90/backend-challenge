@@ -20,7 +20,7 @@
       ConnectionStrings__DefaultConnection: "Server=sqlserver,1433;Database=CnabImporterDb;User Id=sa;Password=YourStrong!Passw0rd;Encrypt=False;TrustServerCertificate=True;"
       DOTNET_ENVIRONMENT: Development
     ports:
-      - "7195:5000"
+      - "7195:8080"
     depends_on:
       - sqlserver
     restart: on-failure

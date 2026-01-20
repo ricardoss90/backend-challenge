@@ -1,23 +1,27 @@
-import { Component, OnInit, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { CnabService } from '../../services/cnab.service';
+import { CommonModule } from "@angular/common";
+import { Component } from "@angular/core";
+import { MatCardModule } from "@angular/material/card";
+import { MatTableModule } from "@angular/material/table";
+import { CnabService } from "../../services/cnab.service";
 
 @Component({
-  selector: 'app-stores',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './stores.html'
+  selector: 'app-stores',
+  imports: [
+    CommonModule,
+    MatTableModule,
+    MatCardModule
+  ],
+  templateUrl: './stores.html',
 })
 export class StoresComponent {
-  stores: any[] = []; // default empty array
+  stores: any[] = [];
 
-  constructor(private cnabService: CnabService) {}
-
-  async ngOnInit() {
-    this.stores = (await this.cnabService.getStores()) || [];
+  constructor(private cnabService: CnabService) {
+    this.load();
   }
 
-  getTotalValue(store: any): number {
-    return store.transactions?.reduce((sum: number, t: any) => sum + t.value, 0) || 0;
+  async load() {
+    this.stores = await this.cnabService.getStores() ?? [];
   }
 }
