@@ -39,6 +39,19 @@
     networks:
       - cnab-network
 
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    container_name: cnab-frontend
+    ports:
+      - "4200:4200"
+    depends_on:
+      - api
+    restart: unless-stopped
+    networks:
+      - cnab-network
+
 networks:
   cnab-network:
     driver: bridge

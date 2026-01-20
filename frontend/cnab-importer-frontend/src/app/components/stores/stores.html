@@ -1,0 +1,19 @@
+<h2>Stores</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Owner</th>
+      <th>Transactions</th>
+      <th>Total Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let store of stores">
+      <td>{{ store.name }}</td>
+      <td>{{ store.owner }}</td>
+      <td>{{ store.transactions.length }}</td>
+      <td>{{ getTotalValue(store) | currency }}</td>
+    </tr>
+  </tbody>
+</table>

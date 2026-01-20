@@ -1,0 +1,5 @@
+<form [formGroup]="form" (ngSubmit)="upload()">
+    <input type="file" (change)="onFileSelected($event)" />
+    <button type="submit">Upload CNAB</button>
+  </form>
+  
